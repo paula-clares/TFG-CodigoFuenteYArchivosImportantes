@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>150</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Jugador
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>150</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Enemigo
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>50</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PersonajeBase
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>260</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EnemigoTipo1
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>260</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EnemigoTipo2
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>260</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EnemigoTipo3
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>80</y>
+      <w>170</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;40.0;150.0;40.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>80</y>
+      <w>160</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>140.0;70.0;140.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>180</y>
+      <w>140</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;50.0;120.0;50.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>180</y>
+      <w>90</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+
+
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>180</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+                                     &lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>160.0;80.0;160.0;50.0;50.0;50.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>360</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Objeto
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>260</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Inventario
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>290</y>
+      <w>50</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=0..1
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>180</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+posee
+m1=1
+</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>430</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Cofre
+-
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>390</y>
+      <w>50</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=0..1
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>250</x>
+      <y>160</y>
+      <w>480</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=0..1
+</panel_attributes>
+    <additional_attributes>10.0;220.0;460.0;220.0;460.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>40</x>
+      <y>0</y>
+      <w>890</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>The Last Pages
+--
+bg=white
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>430</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Puzle
+-
+-
+
+fg=black
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>430</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Estructura
+-
+-
+
+fg=black
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>430</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..n
+</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>530</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Partida
+-
+-
+
+fg=black
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>530</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ManejadorPartidas
+-
+-
+
+fg=black
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>530</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>HUDJugador
+-
+-
+
+fg=black
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>530</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..3
+</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,6 @@
+En este zip solo se incluyen los ficheros que contienen código en el proyecto, pero de esta manera se podrán visualizar desde el editor de Unreal Engine si se pega la esta carpeta en la que tenga el mismo nombre en un nuevo proyecto, pero se obtendrán errores debido a que son necesarios los recursos del proyecto.
+
+Para que el proyecto funcione correctamente, se debe descargar la carpeta "Proyecto" completa que se puede descargar a través de este link: https://unioviedo-my.sharepoint.com/:u:/g/personal/uo252315_uniovi_es/EWiJSpf4Wx1EmqDrDTiL3s4BmlVcd9HgNQciX8vzn-z11Q?e=KVDxyE
+y abrir el archivo "TheLastPages.uproject" que aparecerá dentro de la carpeta del proyecto.
+
+El ejecutable se encuentra en el siguiente link: https://unioviedo-my.sharepoint.com/:u:/g/personal/uo252315_uniovi_es/EQXCtytD6t1JoUs8GGPdSLwBm4n3s9IhPE0XvCV4YMeWqQ?e=v0NGgr

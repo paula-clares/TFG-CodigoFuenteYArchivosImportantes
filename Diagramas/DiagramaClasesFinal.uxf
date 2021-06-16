@@ -1,0 +1,2058 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>144</y>
+      <w>336</w>
+      <h>528</h>
+    </coordinates>
+    <panel_attributes>Jugador
+--
++ EstaAgachada: boolean
++ EstaCasteando: boolean
++ EstaEsquivando: boolean
++ EstaSprintando: boolean
++ EsInvisible?: boolean
++ Ardiendo?: boolean
++ Envenenada?: boolean
++ Ralentizada?: boolean
++ InmuneQuemaduras?: boolean
++ InmuneEnvenenamiento: boolean
++ AguanteActual: float
++ ManaActual: float
++ SaciedadActual: float
++ Nivel: integer
++ ExpActual: float
++ ExpMaxima: float
++ InventarioAbierto: boolean
++ MenuJugadorAbierto: boolean
++ MercaderAbierto; boolean
++ CofreOBolsaAbierta: Actor
++ Atributos: Atributo {9}
++ EnemigoCombatiendo: Enemigo
+--
++ AumentarAguante(float): void
+- ReducirAguante(float): void
++ AumentarMana(float): void
+- ReducirMana(float): void
++ RegenerarMana(float): void
++ AumentarHambre/ReducirSaciedad(): void
++ AumentarExperiencia(float): void
++ Impactado(float): void
++ IntercamiarModoEstandarYCombate(): void
++ HabilitarRaton(): void
++ DeshabilidarRaton(): void
++ UsarObjetoDesdeBarraAccion(integer): void
++ UsarHechizoDesdeBarraAccion(integer): void
+- HayAlgunaVentanaAbierta?(): boolean
+- InteractuableApuntado(): HitResult
++ ObtenerDireccion(): integer
++ EstaCombatiendo?(): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>448</x>
+      <y>144</y>
+      <w>512</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>ControladorJugador
+--
++ HechizosAprendidos: HechizoClass {0..6}
++ Equipo: ObjetoEquipable {0..4}
++ InventarioComponente: InventarioComponente
+--
++ MoverObjeto(integer, integer, InventarioComponente, InventarioComponente): void
++ CantidadObjetosClase(ObjetoClass): integer
++ CrearObjetoYEliminarMateriales(Map&lt;ObjetoClass, integer&gt;, ObjetoClass, boolean, boolean): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1720</x>
+      <y>472</y>
+      <w>216</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Estructura
+--
++ Activada?: boolean
++ Puzle: Puzle
++ MeshEncendida: StaticMesh
++ MeshApagada: StaticMesh
+--
++ Activar(): void
++ Desactivar(): void
++ Encender(): void
++ Apagar(): void
++ Activar/Desactivar(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>680</y>
+      <w>312</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Enemigo
+--
++ Atacando: boolean
+- ExperienciaQueAporta: float
++ CaminoPatrulla: CaminoPatrulla
++ EstaMuerto?: boolean
++ Ralentizado?: boolean
++ VelocidadPersecucion: float
++ Combatiendo?: boolean
++ YaImpactoAlJugador?: boolean
++ SegundosEntreAtaques: float
++ UltimoAtaque: float
++ GeneradorEnemigos: GeneradorEnemigos
+--
+- SpawnTextoDano(vector, float)
+- AnimacionMuerteAleatoriaYRagdoll(): void
+- AnimacionImpactadoAleatoria(): void
+- AnimacionAtaqueAleatoria(): void
+- ReproducirSonidoDejarDeBuscar(): void
+- SpawnearContenido(): void
++ Atacar(): void
++ ActualizarVelocidadMaxima(EstadoBusquedaEnum): void
++ Ralentizar(float): void
++ Impactado(float): void
++ EfectoRagdoll(): void
++ EfectoSecundarioAtaque(Jugador): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1648</x>
+      <y>120</y>
+      <w>272</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Objeto
+--
++ ObjetoStructure: ObjetoStructure
++ GeneradorObjetos: GeneradorObjetos
+--
+AccionUsar(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1840</x>
+      <y>32</y>
+      <w>256</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Cofre
+--
+- EstaEnRango?: boolean
++ InventarioComponente: InventarioComponente
++ Sprite: PaperSprite
+--
++ CerrarCofre(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>1128</y>
+      <w>312</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>ModoDeJuego
+--
++ PASinConfirmar: Map&lt;TipoPAEnum, integer&gt;
++ PATotalesSinConfirmar: integer
++ PATotalesConfirmados: integer
++ DatosMejoras: DatosMejoras
++ DatosAjustes: DatosAjustes
++ HoraEnSegundosEnElJuego: integer
++ SegundosDelDia: float
++ DiasTranscurridosEnElJuego: integer
++ CancionActual: Canciones
++ GestorMarcadoresMinimapa: GestorMarcadoresMinimapa
++ EsNuevaLaPartidaActual?: boolean
++ ReferenciaJugadorHUD: JugadorHUD
++ ReferenciaJugador: Jugador
+--
++ IncrementarAtributo(TipoPAEnum): void
++ DecrementarAtributo(TipoPAEnum): void
++ ComprobarIgualdadEnAtributo(TipoPAEnum): boolean
++ ActualizarAtributos(): void
++ BuscarAtributo(TipoPAEnum): Atributo
++ ReiniciarAtributos(): void
++ AumentarPA(): void
++ BuscarValorAtributoIndependiente(TipoPAEnum): float
++ ObtenerPASinUsar(): integer
++ ObtenerPAAsignados(): integer
++ SimularMuerte(): void
++ CargarMarcadoresMapa(): void
++ EventoFinCargaMapa(): void
++ EventoFinDescargaMapa(): void
++ ComenzarPartida(): void
++ MostrarMenuInical(): void
++ ReproducirCancion(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>448</x>
+      <y>256</y>
+      <w>184</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Atributo
+--
++ Puntos: integer
++ PorcentajeBase: float
++ Tipo: TipoPAEnum
+--
++ CalculoPorcentajeTotal(): float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>448</x>
+      <y>352</y>
+      <w>184</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>AtributoDependiente
+--
++ ValorAtributoBase: float
+--
++ CalculoValorTotal(): float
++ ActualizarAtributo(integer): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>632</y>
+      <w>224</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Enemigo_AI
+--
++ ValorAtributoBase: float
+--
++ CompletarSentidos(AIStimulus{0..*}): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>864</x>
+      <y>256</y>
+      <w>192</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+HechizoStruct
+--
++ DañoHechizoBase: float
++ Descripcion: text
++ Imagen: texture2d
++ EfectoImpacto: particleSystem
++ ManaQueConsume: float
++ ClaseHechizo: ClaseHechizoEnum
++ EfectoMano: particleSystem
++ Nombre: text
++ NombreSinEtiqueta: text
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1384</x>
+      <y>992</y>
+      <w>464</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>InstanciaJuego
+--
++ NombrePartida: string
+--
++ GuardarPartida(): void
++ CargarPartida(): void
++ BorrarPartida(): void
++ NuevaPartida(): void
+- ObtenerBarraAccionHechizos(): Map&lt;integer, HechizoClass&gt;
+- ObtenerBarraAccionObjetos(): Map&lt;integer, texture2d&gt;
+- CargarPuntosSinUsar(): void
+- CargarHechizosAprendidos(HechizoClass): void
+- CargarEquipo(ObjetoEquipableClass): void
+- ObjetosYEnemigosPorZonas(): ArrayList&lt;InfoGeneradores&gt;, ArrayList&lt;InfoGeneradores&gt;
++ EventoCargaMapa(): void
++ EventoDescargaMapa(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1384</x>
+      <y>1192</y>
+      <w>184</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PartidaGuardada
+--
++ DatosPartida: DatosDeGuardado
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2168</x>
+      <y>1088</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+DatosTiempo
+--
++ HoraEnSegundosEnElJuego: integer
++ DiasTranscurridosEnElJuego: integer
++ RotacionLuzSol: Rotator
++ SegundosDelDia: float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1648</x>
+      <y>32</y>
+      <w>176</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Interaccion
+--
++ Interaccion(Actor): boolean
++ GetTextoInteraccion(): text
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1352</x>
+      <y>32</y>
+      <w>288</w>
+      <h>296</h>
+    </coordinates>
+    <panel_attributes>InventarioComponente
+--
++ NombreInventario: text
++ NumeroHuecos: integer
++ Inventario: ArrayList&lt;HuecoStructure&gt;
++ InventarioWidget: Inventario
++ ClasesObjetosMap: Map&lt;integer, ObjetoClass&gt;
++ ModoJuego: ModoDeJuego
+--
++ AnadirAlInventario(HuecoStructure): boolean, integer
++ CrearPila(HuecoStructure): boolean, integer
++ PrepararInventario(): void
++ AnadirALaPila(HuecoStructure, integer): integer
++ Vacio?(): boolean
++ CerrarInventario(): void
++ AbrirInventario() void
++ TirarObjeto(s)(integer): void
++ CantidadObjetosClase(ObjetoClass): integer
++ EliminarUnidadObjeto(ObjetoClass): void
++ CrearContenidoAleatorio(integer): void
++ VaciarInventario(): void
++ IntentarCogerTodoElContenido(): void
++ AmpliarInventario(integer): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>256</y>
+      <w>216</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Hechizo
+--
++ HechizoStruct: HechizoStruct
+--
++ LanzarHechizo(): void
++ ObtenerDanoCausado(): float
++ ObtenerDanoCausadoSinCritico(): float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1648</x>
+      <y>200</y>
+      <w>280</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+ObjetoStructure
+--
++ Nombre: text
++ Descripcion: text
++ TextoAccion: text
++ Stackable: boolean
++ Imagen: texture2d
++ TamañoMaxStack: integer
++ Clase: ObjetoClass
++ NombreSinEtiquetas: text</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>496</y>
+      <w>240</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Mercader
+--
++ Comerciando?: boolean
++ Trueques: ArrayList&lt;Trueque&gt;
++ ClasesObjetosOfertados: ObjetoClass
++ Yendose?: boolean
++ WidgetComercio: Comercio
++ EnCombate?: boolean
+--
++ CargarMercader(): void
++ AbrirCerrarVentanaComercio(boolean): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1856</x>
+      <y>992</y>
+      <w>304</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+DatosDeGuardado
+--
++ DatosJugador: DatosJugador
++ DatosMejoras: DatosMejoras
++ DatosTiempo: DatosTiempo
++ InfoGeneradoresObjetos: ArrayList&lt;InforGeneradores&gt;
++ InfoGeneradoresEnemigos: ArrayList&lt;InforGeneradores&gt;
++ DatosMercader: DatosMercader
++ DatosAjustes: DatosAjustes
++ EsNuevaPartida?: boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1856</x>
+      <y>1144</y>
+      <w>280</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+DatosJugador
+--
++ LocalizacionJugador: Vector
++ Experiencia: float
++ ExperienciaMaxima: float
++ Nivel: integer
++ Vida: float
++ Aguante: foat
++ Mana: float
++ Saciedad: float
++ HechizosAprendidos: HechizoClass{1..6}
++ PAConfirmados: Map&lt;TipoPAEnum, integer&gt;
++ PATotalesSinUsar: integer
++ BarraAccionHechizos: Map&lt;integer, HechizoClass&gt;
++ BarraAccionObjetos: Map&lt;integer, HuecoStructure&gt;
++ Inventario: ArrayList&lt;HuecoStructure&gt;
++ Equipo: ObjetoEquipable{0..4}
++ PosicionBolsa: Vector
++ ContenidoBolsa: Array&lt;HuecoStructure&gt;
++ SegundosRestantesBolsa: integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2168</x>
+      <y>992</y>
+      <w>240</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+DatosMejoras
+--
++ Cofre?: boolean
++ InventarioCofre: ArrayList&lt;HuecoStructure&gt;
++ NumeroHuecosCofreCasa: integer
++ NumeroHuecosBolsa: integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>40</y>
+      <w>160</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>PersonajeBase
+--
++ VidaActual: float
++ VidaMaxima: float
+--
++ AumentarVida(float): void
++ ReducirVida(float): void
++ Sprite: Paper Sprite
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1936</x>
+      <y>120</y>
+      <w>272</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ObjetoCrafteable
+--
++ NecesarioEstarEnCasa?: boolean
++ SoloPuedeHaberUno?: boolean
++ Ampliacion?: boolean
++ MaterialesNecesarios: Map&lt;ObjetoClass, integer&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1936</x>
+      <y>208</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ObjetoEquipable
+--
+//
++ AccionUsar(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>968</x>
+      <y>632</y>
+      <w>224</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Dragon_AI
+--
++ ValorAtributoBase: float
+--
++ CompletarSentidos(AIStimulus{0..*}): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>968</x>
+      <y>704</y>
+      <w>232</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>GeneradorEnemigos
+--
++ ClaseEnemigoAGenerar: EnemigoClass
++ EnemigosGenerados: ArrayList&lt;Enemigo&gt;
++ NumerEnemigosMaximoEnLaZona: integer
++ CaminoPatrulla: CaminoPatrulla
++ InfoGenerador: InfoGeneradores
+--
++ GenerarEnemigo(): void
++ SpawnearEnemigosIniciales(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>704</y>
+      <w>224</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>CaminoPatrulla
+--
++ PuntosPatrulla: ArrayList&lt;Vector&gt;
++ EstaEnBucle?: boolean
++ TiempoEspera: float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>424</x>
+      <y>840</y>
+      <w>232</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>EnemigoVampiro
+--
+- AnimacionMuerteAleatoriaYRagdoll(): void
+- AnimacionImpactadoAleatoria(): void
+- AnimacionAtaqueAleatoria(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>840</y>
+      <w>232</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>EnemigoLento
+--
+- AnimacionMuerteAleatoriaYRagdoll(): void
+- AnimacionImpactadoAleatoria(): void
+- AnimacionAtaqueAleatoria(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>904</x>
+      <y>840</y>
+      <w>232</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>EnemigaRapida
+--
+- AnimacionMuerteAleatoriaYRagdoll(): void
+- AnimacionImpactadoAleatoria(): void
+- AnimacionAtaqueAleatoria(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2112</x>
+      <y>32</y>
+      <w>88</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>CofreCasa
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2216</x>
+      <y>32</y>
+      <w>248</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Bolsa
+--
++ ActualizarSegundosRestantes(): void
+- EstaEnRango?: boolean
++ InventarioComponente: InventarioComponente
++ Sprite: PaperSprite
++ ReferenciaJugador: Jugador
++ SegundosRestantes: integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2216</x>
+      <y>232</y>
+      <w>232</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>GeneradorObjetos
+--
++ ObjetoAGenerar: ArrayList&lt;ObjetoClass&gt;
++ ObjetosGenerados: ArrayList&lt;Objeto&gt;
++ NumeroObjetosMaximoEnLaZona: integer
++ InfoGenerador: InfoGeneradores
+--
++ GenerarObjeto(): void
++ SpawnearObjetosIniciales(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1936</x>
+      <y>264</y>
+      <w>184</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+HuecoStructure
+--
++ ObjetoStructure: ObjetoStructure
++ Cantidad: integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>1128</y>
+      <w>304</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>FuncionesGlobales
+--
++ GetModoJuego(): ModoJuego, boolean
++ GetJugador(): Jugador, boolean
++ GetHud(): JugadorHUD, boolean
++ GetControladorJugador(): ControladorJugador, boolean
++ GetInstanciaJuego(): InstanciaJuego, boolean
++ GetEsferaCielo(): EsferaCielo, boolean
++ GetMercader(): Mercader, boolean
++ AnadirNotificacion(): void
++ AnadirEfecto(text, Texture2D, integer): void
++ Truncar2Decimales(float): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>1288</y>
+      <w>112</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Canciones
+--
++ Menu
++ Estandar
++ Combate
++ Ruinas
++ Mazmorra
++ TemploHelado
++ Noche</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>1424</y>
+      <w>256</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>GestorMarcadoresMinimapa
+--
++ MarcadorPorActor: Map&lt;Actor, MarcadorMapa&gt;
+--
++ AnadirMarcador(Actor): void
++ EliminarMarcador(Actor): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>1352</y>
+      <w>128</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>MarcadorMinimapa
+--
++ Sprite: PaperSprite
++ ActorAEnlazar: Actor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>1288</y>
+      <w>160</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+ElementoConMarcador
+--
++ GetSprite(): PaperSprite</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1488</x>
+      <y>472</y>
+      <w>216</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>Puzle
+--
++ Estructuras: Arraylist&lt;Estructura&gt;
++ Resuelto?: boolean
++ Sprite: PaperSprite
++ ClasePergamino: PergaminoClass
+--
++ Interaccion(Estructura): void
++ CriterioResolucion(): boolean
++ Reiniciar(): void
++ SpawnearPergamino(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1960</x>
+      <y>624</y>
+      <w>280</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>PuzleColores
+--
++ OrdenCorrectoEstructuras: Map&lt;Estructura, integer&gt;
++ OrdenActualEstructuras: Map&lt;Estructura, integer&gt;
++ Combinaciones: ArrayList&lt;CombinacionStruct&gt;
++ IndiceCombinacionActual: integer
+--
++ CriterioResolucion(): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2056</x>
+      <y>472</y>
+      <w>120</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Struct&gt;&gt;
+Combinacion
+--
++ Resultado: Colores
++ Color1: Colores
++ Color2: Colores</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1952</x>
+      <y>472</y>
+      <w>96</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Colores
+--
++ Magenta
++ Amarillo
++ Cian
++ Verde
++ Azul
++ Rojo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1960</x>
+      <y>728</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>EstructuraPuzleColores
+--
++ Color: Colores
+--
++ Activar/Desactivar(): void
++ Interaccion(Actor): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1784</x>
+      <y>624</y>
+      <w>168</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PuzleLuces
+--
++ CriterioResolucion(): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1792</x>
+      <y>672</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EstructuraPuzleLuces
+--
++ Activar/Desactivar(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1488</x>
+      <y>624</y>
+      <w>288</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PuzleOrden
+--
++ OrdenCorrectoEstructuras: Map&lt;Estructura, integer&gt;
++ OrdenActualEstructuras: Map&lt;Estructura, integer&gt;
++ CuentaLocal: integer
++ Puestos: ArrayList&lt;integer&gt;
+--
++ CriterioResolucion(): boolean
++ Interaccion(Estructura): boolean
++ Reiniciar(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1488</x>
+      <y>752</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>EstructuraPuzleOrden
+--
++ Activar/Desactivar(): void
++ Interaccion(Actor): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2768</x>
+      <y>40</y>
+      <w>344</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>JugadorHUD
+--
++ ReferenciaJugador: Jugador
++ ReferenciaControlador: ControladorJugador
++ BandejaNotificaciones: BandejaNotificaciones
++ BandejaEfectos: BandejaEfectos
++ Dialogo: Dialogo
++ BarraAccionHechizos: BarraAccionHechizos
++ BarraAccionObjetos: BarraAccionObjetos
++ MenuPrincipalJugador: MenuPrincipalJugador
++ MenuUsarObjeto: MenuUsarObjetos
++ Minimapa: Minimapa
++ Cruceta: Cruceta
++ DiaYHora: DiaYHora
++ HuecoInventarioSeleccionado: integer
++ Interactuado: HitResult
+--
++ ObjetoTirado(integer, InventarioComponente): void
++ EliminarObjetoDeBarraDeAccion(integer): void
++ EliminarHechizoDeBarraDeAccion(integer): void
++ ActualizarBarraAccionObjetos(): void
++ AnadirNotificacion(text): void
++ CerrarTodasLasVentanas(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2768</x>
+      <y>336</y>
+      <w>464</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>MenuPrincipal
+--
++ BotonesAumentar: BotonAumentar{9}
++ BotonReducir: BotonReducir{9}
++ InfoEquipoArray: InfoEquipo{4}
++ BotonCreacionSeleccionado: BotonCreacionObjeto
+--
++ SeleccionarPestana(integer): void
++ EquiparObjeto(ObjetoEquipable): boolean
++ DesequiparObjeto(ObjetoEquipable): void
++ BuscarBotonReducirPorTipoPA(TiposPAEnum): BotonReducir
++ BuscarBotonAumentarPorTipoPA(TiposPAEnum): BotonAumentar
++ AnadirNuevoHechizo(HechizoClass): boolean
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject
++ OnMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3120</x>
+      <y>40</y>
+      <w>192</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>BotonAumentar
+--
++ TipoPA: TiposPA
+--
++ AsignarEventoConsumirPA(): void
++ ConsumirPA(): void
++ Disable(): void
++ Enable(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3320</x>
+      <y>40</y>
+      <w>192</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>BotonReducir
+--
++ TipoPA: TiposPAEnum
+--
++ AsignarEventoConsumirPA(): void
++ RecuperarPA(): void
++ Disable(): void
++ Enable(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3120</x>
+      <y>144</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>BotonCreacionObjeto
+--
++ ClaseObjeto: ObjetoClass
++ ReferenciaMenuPrincipal: MenuPrincipalJugador
++ ReferenciaControladorJugador: ControladorJugador
+--
++ ActualizarMateriales(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3240</x>
+      <y>336</y>
+      <w>96</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+TiposPA
+--
++ TipoVM
++ TipoMM
++ TipoAM
++ TipoI
++ TipoA
++ TipoR
++ TipoD
++ TipoE
++ TipoC</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2768</x>
+      <y>528</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>InfoEquipo
+--
++ BotonEquipo: BotonEquipo
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2944</x>
+      <y>528</y>
+      <w>496</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>BotonEquipo
+--
++ ObjetoEquipado: ObjetoEquipable
++ TooltipEquipo: TooltipObjetosYHechizos
+--
++ OnPreviewMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ RefrescarTooltip(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2696</x>
+      <y>784</y>
+      <w>456</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>BarraAccionHechizos
+--
++ BarraBloqueada?: boolean
++ Offset: Vector2D
++ HuecosAccion: HuecoAccionHechizo{6}
++ CheckBoxBloqueo: CheckBox
+--
++ CargarBarraAccionHechizos(Map&lt;integer, HechizoClass&gt;): void
++ OnMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2696</x>
+      <y>920</y>
+      <w>456</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>BarraAccionObjetos
+--
++ BarraBloqueada?: boolean
++ Offset: Vector2D
++ HuecosAccion: HuecoAccionObjeto{6}
++ CheckBoxBloqueo: CheckBox
+--
++ CargarBarraAccionObjetos(Map&lt;integer, HuecoStructure&gt;): void
++ OnMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3160</x>
+      <y>784</y>
+      <w>496</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>HuecoAccionHechizo
+--
++ Hechizo: HechizoClass
++ HuecoAccion: integer
++ ReferenciaHUDJugador: JugadorHUD
++ EstiloBotonEnabled: ButtonStyle
++ EstiloBotonDragOver: ButtonStyle
++ EstiloBotonPorDefecto: ButtonStyle
++ TooltipHechizo: TooltipObjetosYHechizos
+--
++ RefrescarTooltip(): void
++ MoverHechizo(integer, integer, HechizoClass, boolean, boolean): void
++ EstiloPorDefecto(): void
++ OnPreviewMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject
++ OnDrop(GeometryStructure, PointerEventStructure, DragDropOperationObject): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3160</x>
+      <y>984</y>
+      <w>496</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>HuecoAccionObjeto
+--
++ HuecoObjeto: HuecoStructure
++ HuecoAccion: integer
++ EstiloBotonEnabled: ButtonStyle
++ EstiloBotonDragOver: ButtonStyle
++ EstiloBotonPorDefecto: ButtonStyle
++ TooltipObjeto: TooltipObjetosYHechizos
++ ReferenciaHUDJugador: JugadorHUD
+--
++ RefrescarTooltip(): void
++ MoverObjeto(integer, integer, HechizoClass, boolean, boolean): void
++ OnPreviewMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject
++ OnDrop(GeometryStructure, PointerEventStructure, DragDropOperationObject): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2912</x>
+      <y>1056</y>
+      <w>176</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>OperacionArrastrarWidget
+--
++ WidgetAArrastrar: UserWidget
++ DropWindowOffset: Vector2D</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2696</x>
+      <y>1056</y>
+      <w>208</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>OperacionArrastrarObjeto
+--
++ Origen: InventarioComponente
++ IndiceHuecoOrigen: integer
++ HuecoArrastrado: HuecoStructure</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3928</x>
+      <y>1248</y>
+      <w>200</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>AvisoGuardarPartida
+--
++ ReferenciaMenuPausa: MenuPausa
+--
++ OnClicked(BotonCancelar)(): void
++ OnClicked(BotonAceptar)(): void
++ OnClicked(BotonCerrar)(): void
++ EventDestruct(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4136</x>
+      <y>1248</y>
+      <w>200</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>AvisoNuevaPartida
+--
++ ReferenciaMenuInicial: MenuInicial
+--
++ OnClicked(BotonCancelar)(): void
++ OnClicked(BotonAceptar)(): void
++ OnClicked(BotonCerrar)(): void
++ EventDestruct(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3928</x>
+      <y>1352</y>
+      <w>200</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>AvisoSalir
+--
++ ReferenciaMenuPausa: MenuPausa
+--
++ OnClicked(BotonCancelar)(): void
++ OnClicked(BotonAceptar)(): void
++ OnClicked(BotonCerrar)(): void
++ EventDestruct(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4136</x>
+      <y>1352</y>
+      <w>200</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>AvisoVolverAlMenuInicial
+--
++ ReferenciaMenuPausa: MenuPausa
+--
++ OnClicked(BotonCancelar)(): void
++ OnClicked(BotonAceptar)(): void
++ OnClicked(BotonCerrar)(): void
++ EventDestruct(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4432</x>
+      <y>784</y>
+      <w>168</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>BandejaNotificaciones
+--
++ AnadirNotificacion(text): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4432</x>
+      <y>832</y>
+      <w>168</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Notificacion
+--
++ TextoAMostrar: text
++ TextoRico: RichTextBlock</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4616</x>
+      <y>784</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Materiales_RichText
+--
++ Texto: text</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4432</x>
+      <y>888</y>
+      <w>168</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Minimapa
+--
++ ImagenMinimapa: Image</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3928</x>
+      <y>1088</y>
+      <w>176</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PantallaCarga
+--
++ FadeIn(): void
++ FadeOut(): void
++ EventoFadeInFinished(): void
++ EventoFadeOutFinished(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3904</x>
+      <y>40</y>
+      <w>176</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>TooltipCustomizado
+--
++ Nombre: text
++ Descripcion: text
++ Imagen: Texture2D
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3904</x>
+      <y>112</y>
+      <w>504</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>BotonHechizo
+--
++ Hechizo: HechizoClass
++ HuecoSpellbook: integer
++ TooltipHechizo: TooltipObjetosYHechizos
+--
++ OnPreviewMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4088</x>
+      <y>40</y>
+      <w>176</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>InfoHechizo
+--
++ BotonHechizo: BotonHechizo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4272</x>
+      <y>40</y>
+      <w>184</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>OperacionArrastrarHechizo
+--
++ IndiceHueco: integer
++ HechizoArrastrado: HechizoClass
++ DesdeSpellbook?: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3904</x>
+      <y>440</y>
+      <w>496</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>HuecoInventario
+--
++ HuecoInventario: integer
++ ReferenciaHUDJugador: HUDJugador
++ ReferenciaControlador: ControladorJugador
++ ReferenciaJugador: Jugador
++ HuecoStructure: HuecoStructure
++ TooltipObjeto: TooltipObjetosYHechizos
+--
++ OnPreviewMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject
++ OnDrop(GeometryStructure, PointerEventStructure, DragDropOperationObject): boolean
++ RefrescarHueco(): void
++ UserObjeto(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3904</x>
+      <y>616</y>
+      <w>496</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Inventario
+--
++ DragWindowOffset: Vector2D
++ ReferenciaJugador: Jugador
++ TituloInventario: text
+--
++ OnMouseButtonDown(GeometryStructure, PointerEventStructure): EventReplyStructure
++ OnDragDetected(GeometryStructure, PointerEventStructure): DragDropOperationObject</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4408</x>
+      <y>440</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>MenuAcciones
+--
++ Visibilidad: ESlateVisibility
++ HuecoSeleccionado: HuecoInventario
+--
++ OnClicked(BotonCancelar)(): void
++ OnClicked(BotonTirar)(): void
++ OnClicked(BotonUso)(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4408</x>
+      <y>544</y>
+      <w>208</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ObjetoArrastrado
+--
++ ImagenArrastrada: Texture2D</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3928</x>
+      <y>1024</y>
+      <w>216</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>MenuInicial
+--
++ AvisoNuevaPartida: AvisoNuevaPartida
+--
++ ComenzarNuevaPartida(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4152</x>
+      <y>1024</y>
+      <w>272</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>MenuPausa
+--
++ AvisoGuardarPartida: AvisoGuardarPartida
++ AvisoVolverAlMenuInicial: AvisoVolverAlMenuInicial
++ AvisoSalir: AvisoSalir
++ Controles: Controles
++ Ajustes: Ajustes
++ Introduccion: Introduccion
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4152</x>
+      <y>1136</y>
+      <w>184</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Fade
+--
++ Fondo: Image
+--
++ AnimationFinished(Fade)(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>632</y>
+      <w>288</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Dragon
+--
++ DanoBaseAtaque: float
++ EnemigosImpactadosLlamarada: Map&lt;Enemigo, float&gt;
++ SegundosEntreAtaques: float
++ UltimoAtaque: float
++ ReferenciaEnemigoFijado: Enemigo
+--
++ Impulsar(): void
++ AtacarEnemigo(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>496</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Mercader_IA
+--
++ CargarIA(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2216</x>
+      <y>144</y>
+      <w>248</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+InfoGeneradores
+--
++ ID: integer
++ CantidadInicial: integer
++ SegundosDesdeUltimaGeneracion: integer
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2168</x>
+      <y>1184</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+DatosMercader
+--
++ Trueques: ArrayList&lt;Trueque&gt;
++ Localizacion: Vector
++ IndiceCaminoPatrulla: integer
++ DireccionPatrulla: integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>496</y>
+      <w>184</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+Trueque
+--
++ CantidadDar: integer
++ CantidadRecibir: integer
++ ClaseObjetoDar: ObjetoClass
++ ClaseObjetoRecibir: ObjetoClass
++ Completado?: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1312</x>
+      <y>1488</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Orbe
+--
++ TituloAyuda: text
++ ID: integer
++ LineaActual: integer
++ MiDialogo: ArrayList&lt;Name&gt;
+--
++ MostrarDialogo(): void
++ GetLineaDialogo(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1312</x>
+      <y>1608</y>
+      <w>168</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Senal
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1056</x>
+      <y>1488</y>
+      <w>240</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>EsferaCielo
+--
++ Sky material: Material Instance Dynamic
++ Refresh material: boolean
++ Directional light actor: Directional Light
++ Colors determined by sun position: boolean
++ Sun brightness: float
++ Cloud speed: float
++ Cloud opacity: float
++ Stars brightness: float
++ Horizon color curve: Curve Linear Color
++ Zenith color curve: Curve Linear Color
++ Cloud color curve: Curve Linear Color
++ SkyLight: SkyLight
++ DaySpeed: float
++ Noche?: boolean
+--
++ UpdateSunDirection(): void
++ RefreshMaterial(): void
++ MostrarDialogo(): void
++ GetLineaDialogo(): void
++ ComenzarCiclo(): void
++ ComenzarDia(float): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2168</x>
+      <y>1280</y>
+      <w>160</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Structure&gt;&gt;
+DatosAjustes
+--
++ Resolucion: integer
++ VentanaOCompleta: integer
++ VisionDistancia: integer
++ Sombras: integer
++ Texturas: integer
++ VolumenMusica: float
++ VolumenEfectos: float
++ SensibilidadRaton: float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3960</x>
+      <y>784</y>
+      <w>208</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Comercio
+--
++ ReferenciaMercader:Mercader
++ Trueques: ArrayList&lt;Trueque&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3960</x>
+      <y>848</y>
+      <w>200</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Trueque
+--
++ Trueque: Trueque_Structure
++ IDTrueque: integer
++ TooltipDar: TooltipCustomizado
++ TooltipRecibir: TooltipCustomizado
+--
++ RealizarTrueque(): void
++ InicializarTrueque(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4176</x>
+      <y>784</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>BandejaEfectos
+--
++ AnadirEfecto(text, Texture2D, integer): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4176</x>
+      <y>832</y>
+      <w>176</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Efecto
+--
++ NombreEfecto: text
++ ImagenEfecto: Texture2D
++ SegundosDuracion: integer
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3928</x>
+      <y>1176</y>
+      <w>216</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Ajustes
+--
++ ReferenciaModoJuego: ModoDeJuego
++ ReferenciaMenuPausa: MenuPausa
+--
++ Inicializar(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1328</x>
+      <y>0</y>
+      <w>1152</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete Objetos
+bg=orange
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4376</x>
+      <y>1248</y>
+      <w>200</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FinJuego
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4376</x>
+      <y>1200</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Introduccion
+--
++ ReferenciaMenuPausa: MenuPausa</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>40</y>
+      <w>160</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>ElementoConMarcador
+--
+
+--
++ GetSprite: Paper Sprite
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>96</x>
+      <y>0</y>
+      <w>1152</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete Personajes
+bg=blue
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1464</x>
+      <y>440</y>
+      <w>800</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete Puzles
+bg=yellow
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2736</x>
+      <y>0</y>
+      <w>864</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete JugadorHUD 1
+bg=gray
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>2672</x>
+      <y>744</y>
+      <w>1016</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete JugadorHUD 2
+bg=gray
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3808</x>
+      <y>0</y>
+      <w>704</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete JugadorHUD 4
+bg=gray
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3896</x>
+      <y>400</y>
+      <w>728</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete JugadorHUD 5
+bg=gray
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3944</x>
+      <y>744</y>
+      <w>808</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete JugadorHUD 6
+bg=gray
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1384</x>
+      <y>928</y>
+      <w>1040</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete Partidas
+bg=green
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>216</x>
+      <y>1088</y>
+      <w>680</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete ModoJuego
+bg=red
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1040</x>
+      <y>1448</y>
+      <w>464</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete Mundo
+bg=black
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3928</x>
+      <y>992</y>
+      <w>512</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Paquete Menús
+bg=white
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4152</x>
+      <y>1200</y>
+      <w>216</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Controles
+--
++ ReferenciaMenuPausa: MenuPausa
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
